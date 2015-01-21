@@ -1,0 +1,21 @@
+function vers = eegplugin_multiplot( fig, try_strings, catch_strings)
+
+vers = 'MultiPlot 0.01';
+% create menu
+
+% submenu = uimenu( toolsmenu, 'label', 'CW Regression Tool');
+
+
+% fastrcmd = [ try_strings.no_check '[EEG LASTCOM] = pop_fmrib_fastr(EEG);' catch_strings.new_and_hist ];
+% pascmd=[ try_strings.no_check '[EEG LASTCOM] = pop_fmrib_pas(EEG);' catch_strings.new_and_hist ];
+% qrsdetectcmd=[ try_strings.no_check '[EEG LASTCOM] = pop_fmrib_qrsdetect(EEG);' catch_strings.new_and_hist ];
+
+% add menu
+%----------
+toolsmenu = findobj(fig, 'tag', 'tools');
+cwregressionmenu=uimenu(toolsmenu,'label','CW Regression Tool','separator','on','tag','CW Regression Tools');
+commando1 = [ try_strings.no_check '[EEG LASTCOM] = pop_cwregression( EEG );' catch_strings.new_and_hist ];
+submenu_cwregression=uimenu(cwregressionmenu,'label','Remove BCG/Hg Artifacts','tag','cwregression menu','callback',commando1);
+
+commando2 = [ try_strings.no_check '[EEG LASTCOM] = pop_diagnostics( EEG );' catch_strings.new_and_hist ];
+submenu_diagnostics=uimenu(cwregressionmenu,'label','Diagnostics','separator','on','tag','diagnostics menu','callback',commando2);

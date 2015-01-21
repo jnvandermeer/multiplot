@@ -1,0 +1,334 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+                    
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+                    
+  <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; FreeBSD 4.0-20000608-STABLE i386) [Netscape]">
+  <title></title>
+</head>
+  <body alink="#000099" bgcolor="#fcffff" link="#000099" text="#000000" vlink="#990099">
+<!--remove for book begin-->
+         
+<blockquote>         
+  <p><a href="http://www.sccn.ucsd.edu/"><img src="contrib_files/SCCN.jpg" alt="" width="100" height="74">
+     <br>
+                  </a><b><font face="ariel,Helvetica"><font color="#00008b"><a href="http://www.sccn.ucsd.edu/">SCCN Home</a></font></font></b><font face="Helvetica, Arial, sans-serif"><br>
+     <b><a href="http://cognitrn.psych.indiana.edu/busey/temp/eeglabtutorial4.301/index.html">EEGLAB home</a></b><br>
+     <br>
+          </font>   </p>
+
+		<!--remove for book end-->
+
+  <h1><font color="#ff0000" face="Helvetica, Arial, sans-serif">A3. How to contribute to EEGLAB</font> 
+    </h1>
+
+<p align="justify"> 
+<font face="Helvetica, Arial, sans-serif"> Please send us (<a href="mailto:eeglab@sccn.ucsd.edu">eeglab@sccn.ucsd.edu</a>)  any 
+EEGLAB-compatible functions you think would be of interest to other researchers.
+Include, best in the help message (or in a comment following), a
+brief explanations and/or references for the signal processing methods used.
+            </font></p><font face="Helvetica, Arial, sans-serif">
+     <h2><font color="#000099" face="Helvetica, Arial, sans-serif">
+A3.1. Open source policy</font></h2>         
+           
+  <p align="justify"><font face="Helvetica, Arial, sans-serif">1 -  EEGLAB
+ is distributed under the  <a href="http://www.gnu.org/licenses/gpl.txt">GPL
+ GNU license</a>,  which states that the software cannot be modified for
+commercial  purposes.  Any contributed functions we add to EEGLAB will be
+made available   for free non-commercial use under this license.  </font></p>
+           
+  <p align="justify"><font face="Helvetica, Arial, sans-serif">2 - We will 
+ credit your authorship of the functions on the function help pages. The authors
+ will retain all commercial rights to the functions.   </font></p>
+           
+  <p align="justify"><font face="Helvetica, Arial, sans-serif">3 - Functions 
+ that we find to be accurate, stable, of some general interest and complementary 
+ to existing EEGLAB functions will first be included in a 'contributed' directory 
+ distributed as a part of EEGLAB.  If a contributed function proves to be
+ stable and of widespread interest, we may integrate it into the main EEGLAB
+ menu.   </font></p>
+           
+     <h2><font color="#000099" face="Helvetica, Arial, sans-serif">
+A3.2. How to write an EEGLAB function</font></h2>         
+
+  <p align="justify"><font face="Helvetica, Arial, sans-serif">Adding new
+ functionality to EEGLAB requires a pair of functions, a signal processing
+ function  (Ex: <b><a href="http://cognitrn.psych.indiana.edu/busey/temp/eeglabtutorial4.301/download/sample.m" target="_blank">sample.m</a></b>)
+and an accompanying pop_function  (Ex: <b><a href="http://cognitrn.psych.indiana.edu/busey/temp/eeglabtutorial4.301/download/pop_sample.m" target="_blank">pop_sample.m</a></b>). The
+pop_function pops up a text input window allowing the user to specify arguments
+to the signal processing function. The Matlab help messages for each function
+ should state clearly what input arguments the functions require and what
+they output, using the help message format explained below.  
+  </font>
+
+  </p><h3><font color="#ff0000" face="Helvetica, Arial, sans-serif">A3.2.1. The signal-processing function</font></h3>
+           
+  <p align="justify"><font face="Helvetica, Arial, sans-serif">This function
+  should comply with the EEGLAB help-message syntax to allow the header 
+to  be converted into an .html help page by (functions <a href="http://cognitrn.psych.indiana.edu/busey/temp/eeglabtutorial4.301/allfunctions/makehtml.html" target="_blank"><b>makehtml()</b></a> and
+ <b><a href="http://cognitrn.psych.indiana.edu/busey/temp/eeglabtutorial4.301/allfunctions/help2html.html" target="_blank">help2html()</a></b> 
+).  We propose this <b><a href="http://cognitrn.psych.indiana.edu/busey/temp/eeglabtutorial4.301/download/sample.m" target="_blank">sample</a></b>
+header. Below is the GNU license disclaimer we will include in the function
+header. </font></p>
+         
+  <blockquote>           
+    <blockquote>                 
+      <p align="justify"><font face="Helvetica, Arial, sans-serif"> 
+ <i>This program is free software; you can redistribute  it and/or modify
+    it under the terms of the GNU General 
+  Public License as published by
+    the Free Software Foundation; either 
+  version 2 of the License, or
+    (at your option) any later version.
+                   
+      </i></font></p><p align="justify"><font face="Helvetica, Arial, sans-serif"><i>
+ This program is distributed in the hope that  it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A  PARTICULAR  PURPOSE. See the
+GNU General Public License for more  details.
+                   
+      </i></font></p><p align="justify"><font face="Helvetica, Arial, sans-serif"><i><font face="Helvetica, Arial, sans-serif">
+ You should have received a copy of the GNU General Public License
+along with this program; if not, write  to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA</font></i><font face="Helvetica, Arial, sans-serif">
+   </font></font></p></blockquote><font face="Helvetica, Arial, sans-serif"><font face="Helvetica, Arial, sans-serif">
+   </font></font></blockquote><font face="Helvetica, Arial, sans-serif"><font face="Helvetica, Arial, sans-serif">
+            
+  <h3><font color="#ff0000" face="Helvetica, Arial, sans-serif">A3.2.2. The associated pop_function 
+  function</font></h3>
+           
+  <p align="justify"><font face="Helvetica, Arial, sans-serif">The pop_function
+  is the graphical interface to the signal-processing function. It must include
+  the same disclaimer as the signal processing function and </font></p>
+           
+  <div align="justify">          
+  <blockquote><font face="Helvetica, Arial, sans-serif">1 - It must take the
+EEGLAB data structure 'EEG' as a first input. The second parameter may specify
+ wether the signal processing function will be applied to ICA component activations
+ or to the raw EEG data channels. </font>                  
+    <p><font face="Helvetica, Arial, sans-serif">2 - Additional parameters
+  must be optional. If they are left blank in the pop_function call,  a window
+ must pop-up to ask for their values. </font></p>
+                     
+    <p><font face="Helvetica, Arial, sans-serif">3 - The pop_function must
+ return  a 'string' containing the resulting call to the signal processing
+ function  (or in some cases to the pop_function). When this string is evaluated
+  (using the Matlab function 'eval)'),  the result must be the same as that
+ of the pop_function itself, e.g. including all the parameters the user may
+ enter into the pop window. This string will be pushed into the EEGLAB command
+ history stack. </font></p>
+                     
+    <p><font face="Helvetica, Arial, sans-serif">4 - As a convention, if the
+function draws a figure, calling the function without enough arguments  should
+pop up a new figure. However, with enough arguments (macro call), the function
+should directly draw the output graphic in the current figure  (thus allowing
+the user to build multi-part figures with 'sbplot()' commands).</font></p>
+    </blockquote>
+    <font face="Helvetica, Arial, sans-serif"> Writing the pop_function is 
+easy and can usually be done in a few minutes if you just modify the <a href="http://cognitrn.psych.indiana.edu/busey/temp/eeglabtutorial4.301/download/pop_sample.m" target="_blank"><b>pop_sample.m</b></a> function source.
+  </font></div>
+    <br>
+
+
+     <h2><font color="#000099" face="Helvetica, Arial, sans-serif">
+<a name="Plugins"></a>
+A3.3. How to write an EEGLAB plugin</font></h2>         
+           
+  <p align="justify"><font face="Helvetica, Arial, sans-serif">EEGLAB will 
+  automatically incorporate any appropriately named "plugin" functions 
+(Ex: 'eegplugin_myfunc.m') that EEGLAB finds in the same directory 
+as 'eeglab.m'. 
+
+Creating an EEGLAB plugin will add a menu item 
+with the menu label(s) specified in your plugin 
+to the bottom of an EEGLAB menu (the top menu label possibly linked 
+to an unlimited number of sub-menus).  
+These menu item(s) can call standard or custom data processing 
+and "pop" functions (see examples below).
+
+When a user downloads an EEGLAB plugin (either from the main EEGLAB site 
+or from any other site), 
+he or she simply has to uncompress the plugin files 
+into the plugin sub-directory or into the main EEGLAB directory (where <i>eeglab.m</i> is located). 
+The plugin will be detected by EEGLAB at startup 
+by looking for a file or directory name beginning with "eegplugin_"
+in the main EEGLAB directory (i.e., the same directory as 'eeglab.m').
+
+  </font></p><h3><font face="Helvetica, Arial, sans-serif"><font color="#ff0000" face="Helvetica, Arial, sans-serif">A3.3.1 The plugin function</font></font></h3><font face="Helvetica, Arial, sans-serif">
+<p align="justify">
+To create a new EEGLAB plugin, 
+simply create a Matlab function file whose name begins with "eegplugin_"
+and place it into the plugin subdirecotry or your main EEGLAB directory. 
+This function must take three arguments, as in the 'test' plugin below:
+</p><blockquote><b><font color="blue">
+
+eegplugin_test( fig, try_strings, catch_strings);
+</font></b>
+</blockquote>
+<p align="justify">
+The three arguments above are provided to the plugin by <b>eeglab()</b>.
+The first argument ('fig') is the handle of the main EEGLAB window. 
+The second and third arguments are structures passed by EEGLAB 
+that allow the plugin to check parameters, 
+detect errors, etc. (see below).
+If you do not want your plugin 
+to alter EEGLAB history and error message handling, 
+you can ignore the latter two parameters 
+(although the plugin function definition still must list all three arguments).
+
+  </p><h3><font color="#ff0000" face="Helvetica, Arial, sans-serif">A3.3.2. Adding a sub-menu</font></h3>
+<p align="justify">
+To create a new submenu under a top-level EEGLAB menu, simply type 
+<br>
+</p><blockquote><b><font color="blue">
+uimenu( fig, 'label', 'My function', 'callback', ...
+<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;[ 'EEG = pop_myfunc(EEG, ...); [ALLEEG EEG CURRENTSET] ...
+<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= eeg_store(ALLEEG, EEG, CURRENTSET);' ]); 
+</font></b>
+
+</blockquote>
+<p align="justify">
+The statement "[ALLEEG EEG CURRENTSET] = eeg_store(ALLEEG, EEG, CURRENTSET);" 
+above insures that your modified EEG dataset 
+will be stored in the EEGLAB "ALLEEG" structure.
+
+  </p><h3><font color="#ff0000" face="Helvetica, Arial, sans-serif">A3.3.3. Plugins and EEGLAB history</font></h3>
+<p align="justify">
+If you want your plugin to interact with the EEGLAB history mechanism, 
+you should take advantage of the second ('try_strings') and third ('catch_strings') arguments to your plugin function.
+The second argument (see <b>eegplugin_test()</b> above) contains commands 
+(organized into a Matlab structure) that check the input dataset 
+and attempt to execute your command. 
+The third argument ('catch_strings') 
+contains commands to handle errors 
+and add the contents of the LASTCOM (i.e., last command) variable 
+to the EEGLAB history. 
+</p><p align="justify">
+Plugin functions should declare one or more EEGLAB menu items.
+Each menu declaration should look like this:<br>
+</p><blockquote><b><font color="blue">
+
+uimenu( submenu, 'label', 'My function', 'callback', ...
+<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;[ try_strings.anyfield '[EEG LASTCOM] ...
+<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+= pop_myfunc(EEG, ...);' arg3.anyfield ]);
+</font></b>
+</blockquote>
+<p align="justify">
+Possible fields for 'try_strings' (above) are:
+</p><ul>
+<li><font color="blue"><b>try_strings.no_check</b></font> : check for the presence of a non-empty EEG dataset only
+</li><li><font color="blue"><b>try_strings.check_ica</b> </font>: check that the dataset includes ICA weights
+</li><li><font color="blue"><b>try_strings.check_cont</b> :</font> check that the dataset is continuous
+</li><li><font color="blue"><b>try_strings.check_epoch</b> :</font> check that the dataset is epoched
+</li><li><font color="blue"><b>try_strings.check_event</b> :</font> check that the dataset contains events
+</li><li><font color="blue"><b>try_strings.check_epoch_ica</b> :</font> check that the dataset is epoched <i>and</i> includes ICA weights
+</li><li><font color="blue"><b>try_strings.check_chanlocs</b> :</font> check that the dataset contains a channel location file 
+</li><li><font color="blue"><b>try_strings.check_epoch_chanlocs</b> :</font> check that the dataset is epoched <i>and</i> includes a channel location file
+</li><li><font color="blue"><b>try_strings.check_epoch_ica_chanlocs</b> :</font> check that the dataset is epoched <i>and</i> includes ICA weights
+and a channel location file. 
+</li></ul>
+<p align="justify">
+Possible fields for 'catch_strings' are:
+</p><ul>
+<li><font color="blue"><b>catch_strings.add_to_hist</b> :</font> add the LASTCOM variable content (if not empty) to the EEGLAB history
+</li><li><font color="blue"><b>catch_strings.store_and_hist</b> :</font> add the LASTCOM variable content (if not empty) to the EEGLAB history <i>and</i> 
+store the EEG dataset in the ALLEEG variable.
+</li><li><font color="blue"><b>catch_strings.new_and_hist</b> :</font> add the LASTCOM variable content (if not empty) to the EEGLAB history <i>and</i> 
+pop up a window for a new dataset.
+</li></ul>
+
+  <h3><font color="#ff0000" face="Helvetica, Arial, sans-serif">A3.3.4. Plugin examples</font></h3>
+
+The simplest plug-in might only call a plotting function. For instance,
+to write a simple plugin to plot the ERP of every channel in a
+different color (without performing any data checking):<br>
+
+<blockquote><b><font color="blue">
+		% eegplugin_erp() - plot ERP plugin<br>
+		function eegplugin_erp( fig, try_strings, catch_strings);
+		<br>
+		<br>
+		% create menu<br>
+        plotmenu = findobj(fig, 'tag', 'plot');<br>
+		uimenu( plotmenu, 'label', 'ERP plugin', ...<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'callback', 'figure; plot(EEG.times, mean(EEG.data,3));');<br>
+</font></b>
+</blockquote>
+Save the text above as a file, 'eegplugin_erp.m' 
+into the plugin sub-directory of EEGLAB (or the EEGLAB directory where <i>eeglab.m</i> is located) and restart EEGLAB 
+(click <a href="http://cognitrn.psych.indiana.edu/busey/temp/eeglabtutorial4.301/eegplugin_erp.m" target="_blank">here</a> 
+to download this .m file). 
+Then select the menu item 
+<font color="#990000"><b>Plot &gt; ERP plugin</b></font>
+to plot the ERP of an epoched dataset.<br><br>
+
+To create a plugin named 'PCA' that would apply PCA to your data 
+and store the PCA weights in place of the ICA weights, 
+save the Matlab commands below as file 'eegplugin_pca.m' 
+into the plugin sub-directory of EEGLAB (or the EEGLAB directory where <i>eeglab.m</i> is located) and restart EEGLAB 
+(click <a href="http://cognitrn.psych.indiana.edu/busey/temp/eeglabtutorial4.301/eegplugin_pca.m" target="_blank">here</a> 
+to download this .m file).
+<blockquote><b><font color="blue">
+		% eegplugin_pca() - pca plugin<br>
+		function eegplugin_pca( fig, try_strings, catch_strings);
+		<br>
+		<br>
+		% create menu<br>
+        toolsmenu = findobj(fig, 'tag', 'tools');<br>
+		submenu = uimenu( toolsmenu, 'label', 'PCA plugin');<br><br>
+        % build command for menu callback<br>
+        cmd = [ '[tmp1 EEG.icawinv] = runpca(EEG.data(:,:));' ];
+<br> cmd = [ cmd 'EEG.icaweights = pinv(EEG.icawinv);' ];
+<br> cmd = [ cmd 'EEG.icasphere = eye(EEG.nbchan);' ];
+<br> cmd = [ cmd 'clear tmp1;' ];<br>
+
+<br>finalcmd = [ try_strings.no_check cmd ];
+<br>finalcmd = [ finalcmd 'LASTCOM = ''' cmd ''';' ];
+<br>finalcmd = [ finalcmd catch_strings.store_and_hist ];
+<br><br>
+        % add new submenu<br>
+        uimenu( submenu, 'label', 'Run PCA', 'callback', finalcmd);<br>
+</font></b>
+</blockquote>
+</font><p align="justify"><font face="Helvetica, Arial, sans-serif">
+<b>Note</b> that as of EEGLAB v4.3 you may add plugin menu items 
+to different EEGLAB menus. Above,
+we add a sub-menu to the <font color="#990000"><b>Tools</b></font>
+menu by specifying "<b>'tag','tools'</b>" in the <b>findobj()</b> call. 
+If the specified tag were "<b>import data</b>", 
+EEGLAB would add the plugin to the 
+<font color="#990000"><b>File &gt; Import data</b></font> menu. 
+Using the tag "<b>import epoch</b>" would add the plugin to the 
+<font color="#990000"><b>File &gt; Import epoch info</b></font> menu. 
+The tag "<b>import event</b>" would add the plugin to
+the <font color="#990000"><b>File &gt; Import event info</b></font>
+menu. 
+The tag "<b>export</b>" would add the plugin to the <font color="#990000"><b>File &gt; Export data</b></font> menu. 
+Finally, 
+the tag "<b>plot</b>" would add the plugin to the <font color="#990000"><b>Plot</b></font> menu. (Note that the tag call
+should be in lower case).
+<br><br>
+After installing the plugin above, a new EEGLAB menu item 
+<font color="#990000"><b>Tools &gt; PCA plugin</b></font> will be created.
+Use this menu item to run PCA on the current EEG dataset. 
+The resulting PCA decomposition will be stored in place of the 
+ICA decomposition. 
+(Note: This is possible since both PCA and ICA are linear decompositions).
+<br><br>
+See the EEGLAB DIPFIT plugin <a href="http://cognitrn.psych.indiana.edu/busey/temp/eeglabtutorial4.301/allfunctions/eegplugin_dipfit.html" trget="_blank">eegplugin_dipfit()</a> for an example of a more elaborate plugin.
+<br><br>
+
+<font color="red"><b>Note:</b></font> In December, 2003 
+we slightly modified how EEGLAB handles plugins. 
+As a result, EEGLAB is not fully compatible 
+with any plugin functions developed prior to version 4.3.
+From now on, EEGLAB will support backwards compatibility 
+for the plugin machinery.
+     </font>          
+  </p>
+   </font></font></font></blockquote><font face="Helvetica, Arial, sans-serif"><font face="Helvetica, Arial, sans-serif">
+<br>
+
+
+</font></font></body></html>
