@@ -47,9 +47,7 @@ if numel(varargin)==0
             DEFAULT_YSCALE = edits{1};
             DEFAULT_BEGIN_TIME = edits{2};
         else
-            DEFAULT_YSCALE = num2str(100);
-            DEFAULT_BEGIN_TIME = num2str(0);
-        end
+                    DEFAULT_YSCALE = num2str(100);
 
             
         
@@ -62,14 +60,6 @@ if numel(varargin)==0
         DEFAULT_YSCALE = num2str(100);
         
     end
-    
-    % OK - i got the info - now protect my original eeglab figures from
-    % being 'noui-ed' by the eeglab('noui') function mater on in
-    % m_plot_alleeg_detail.m!
-    if numel(findobj(0,'tag','EEGPLOT'))>0
-        set(findobj(0,'tag','EEGPLOT'),'tag','BACKUP_EEGPLOT');
-    end
-    
     
     uilist = {};
     geom = {};
@@ -235,9 +225,6 @@ command = [command sprintf(' ); ') ];
 % keyboard;
 % ok - plot it! and yeidl return value
 fh=m_plot_alleeg_detail(ALLEEG,xindices,begin_time,time_to_plot,my_yscale,selection_of_ALLEEG,colorspecs,linewidths,linestyles);
-
-% restore original tagging again.
-set(findobj(0,'tag','BACKUP_EEGPLOT'),'tag','EEGPLOT');
 
 
 EEGOUT = ALLEEG(1);

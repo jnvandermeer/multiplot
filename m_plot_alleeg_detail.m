@@ -83,6 +83,7 @@ end
         
         
         % plot window...
+        % keyboard;
         eegplot(m,'srate',fs,'winlength',time_to_plot);
         out_fh=gcf;
         
